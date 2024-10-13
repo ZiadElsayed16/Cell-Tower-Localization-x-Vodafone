@@ -1,1 +1,2 @@
 *.pkl filter=lfs diff=lfs merge=lfs -text
+saved-models/random_forest_pipeline.pkl filter=lfs diff=lfs merge=lfs -text
