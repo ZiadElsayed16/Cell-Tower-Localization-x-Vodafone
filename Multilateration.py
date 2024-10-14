@@ -244,8 +244,19 @@ class MultilaterationResultAnalyzer:
             self.plot_violin_subplot(comparison, est_lat, est_lon, true_lat, true_lon, f'Violin Plots of Actual vs Estimated Locations ({title})')
             r2_lat = r2_score(comparison[true_lat], comparison[est_lat])
             r2_lon = r2_score(comparison[true_lon], comparison[est_lon])
+            # MSE
+            mse_lat= mean_squared_error(comparison[true_lat], comparison[est_lat])
+            mse_lon = mean_squared_error(comparison[true_lon], comparison[est_lon])
+
+            # RMSE (square root of MSE)
+            rmse_lat = root_mean_squared_error(comparison[true_lat], comparison[est_lat])
+            rmse_lon = root_mean_squared_error(comparison[true_lon], comparison[est_lon])
+            print(f"MSE for Latitude ({title}): {mse_lat:.4f}")
+            print(f"MSE for Longitude ({title}): {mse_lon:.4f}") 
+            print(f"RMSE for Latitude ({title}): {rmse_lat:.4f}")
+            print(f"RMSE for Longitude ({title}): {rmse_lon:.4f}") 
             print(f"R² for Latitude ({title}): {r2_lat:.4f}")
-            print(f"R² for Longitude ({title}): {r2_lon:.4f}")            
+            print(f"R² for Longitude ({title}): {r2_lon:.4f}")        
     
     @staticmethod
     def analyze_comparison(df, estimated_lat_col, estimated_lon_col, actual_lat_col, actual_lon_col, title):
